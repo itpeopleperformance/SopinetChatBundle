@@ -49,7 +49,7 @@ services:
 
     sopinet_chatbundle.listener.doctrine_event_listener:
         class: Sopinet\ChatBundle\Listener\DoctrineEventListener
-        arguments: [%sopinet_chat.config%]
+        arguments: ['%sopinet_chat.config%']
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }
 
