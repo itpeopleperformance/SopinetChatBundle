@@ -1,5 +1,5 @@
 {
-  "name": "itpeopleperformance/chatbundle",
+  "name": "itpeopleperformance/chatbundle-2",
   "description": "Symfony4 Bundle - Notification groups Bundle",
   "keywords": ["chat", "notification","gcm", "apns", "symfony2", "bundle"],
   "type": "symfony-bundle",
