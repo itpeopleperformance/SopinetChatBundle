@@ -23,7 +23,7 @@
   ],
   "require": {
     "php": ">=7.3",
-    "itpeopleperformance/apihelper-bundle": "*",
+    "itpeopleperformance/apihelper-bundle": "dev-master",
     "friendsofsymfony/user-bundle": "*",
     "knplabs/doctrine-behaviors": "*",
     "nelmio/api-doc-bundle": "*",
