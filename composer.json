@@ -30,7 +30,7 @@
     "richsage/rms-push-notifications-bundle": "*",
     "stof/doctrine-extensions-bundle": "*",
     "gos/web-socket-bundle": "*",
-    "oldsound/rabbitmq-bundle": "^1.0.0",
+    "php-amqplib/rabbitmq-bundle": "2.10.2",
     "vich/uploader-bundle": "*",
      "ext-sockets": "*"
   },
