@@ -22,7 +22,7 @@
     }
   ],
   "require": {
-    "php": ">=7.4",
+    "php": ">=7.3",
     "itpeopleperformance/apihelper-bundle": "*",
     "friendsofsymfony/user-bundle": "*",
     "knplabs/doctrine-behaviors": "*",
