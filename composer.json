@@ -31,7 +31,6 @@
     "stof/doctrine-extensions-bundle": "*",
     "gos/web-socket-bundle": "*",
     "oldsound/rabbitmq-bundle": "^1.0.0",
-    "videlalvaro/php-amqplib": "3.6.0",
     "vich/uploader-bundle": "*",
      "ext-sockets": "*"
   },
