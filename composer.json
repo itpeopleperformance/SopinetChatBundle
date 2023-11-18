@@ -30,7 +30,8 @@
     "richsage/rms-push-notifications-bundle": "*",
     "stof/doctrine-extensions-bundle": "*",
     "gos/web-socket-bundle": "*",
-    "oldsound/rabbitmq-bundle": "1.0.0",
+    "oldsound/rabbitmq-bundle": "^1.0.0",
+    "videlalvaro/php-amqplib": "3.0.x-dev",
     "vich/uploader-bundle": "*"
   },
   "autoload": {
