@@ -26,7 +26,6 @@
     "itpeopleperformance/apihelper-bundle-2": "*",
     "friendsofsymfony/user-bundle": "*",
     "knplabs/doctrine-behaviors": "*",
-    "nelmio/api-doc-bundle": "4.10.0",
     "richsage/rms-push-notifications-bundle": "*",
     "stof/doctrine-extensions-bundle": "*",
     "gos/web-socket-bundle": "*",
