@@ -24,7 +24,6 @@
   "require": {
     "php": ">=7.3",
     "itpeopleperformance/apihelper-bundle-2": "*",
-    "friendsofsymfony/user-bundle": "*",
     "knplabs/doctrine-behaviors": "*",
     "richsage/rms-push-notifications-bundle": "*",
     "stof/doctrine-extensions-bundle": "*",
