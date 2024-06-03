@@ -35,5 +35,11 @@
   "autoload": {
     "psr-0": { "Sopinet\\ChatBundle": "" }
   },
+   "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/itpeopleperformance/ApiHelperBundle"
+        }
+    ],
   "target-dir": "Sopinet/ChatBundle"
 }
