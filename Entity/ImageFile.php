@@ -20,7 +20,7 @@ use JMS\Serializer\Annotation\Exclude;
  */
 class ImageFile
 {
-    use ORMBehaviors\Timestampable\Timestampable;
+   // use ORMBehaviors\Timestampable\Timestampable;
 
     /**
      * @var integer
