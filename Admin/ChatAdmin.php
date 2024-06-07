@@ -2,13 +2,13 @@
 
 namespace Sopinet\ChatBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ChatAdmin extends Admin
+class ChatAdmin extends AbstractAdmin
 {
     /**
      * Default Datagrid values
