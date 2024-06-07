@@ -20,7 +20,7 @@ class UserState
 
     const GROUP_CREATE = "userState_group_create";
 
-    use ORMBehaviors\Timestampable\Timestampable;
+    //use ORMBehaviors\Timestampable\Timestampable;
 
     /**
      * @var integer
