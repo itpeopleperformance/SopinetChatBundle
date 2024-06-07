@@ -28,7 +28,7 @@ class MessagePackage
     const STATUS_KO = -1;
     const STATUS_PENDING = 0;
 
-    use ORMBehaviors\Timestampable\Timestampable;
+   // use ORMBehaviors\Timestampable\Timestampable;
 
     /**
      * @var integer
