@@ -18,7 +18,7 @@ class Device
 {
     const GROUP_CREATE = "device_group_create";
 
-    use ORMBehaviors\Timestampable\Timestampable;
+    //use ORMBehaviors\Timestampable\Timestampable;
 
     const TYPE_IOS = "iOS";
     const TYPE_ANDROID = "Android";
