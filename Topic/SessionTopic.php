@@ -16,7 +16,7 @@ class SessionTopic implements TopicInterface, PushableTopicInterface
      * @param array|string $data
      * @param string       $provider The name of pusher who push the data
      */
-    public function onPush(Topic $topic, WampRequest $request, $data, $provider)
+    public function onPush(Topic $topic, WampRequest $request, $data, $provider): void
     {
         $topic->broadcast($data);
     }
