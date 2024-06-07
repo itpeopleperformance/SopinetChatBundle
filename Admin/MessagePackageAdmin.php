@@ -2,13 +2,13 @@
 
 namespace Sopinet\ChatBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class MessagePackageAdmin extends Admin
+class MessagePackageAdmin extends AbstractAdmin
 {
     /**
      * Default Datagrid values
@@ -23,7 +23,7 @@ class MessagePackageAdmin extends Admin
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
             ->add('id')
@@ -38,14 +38,13 @@ class MessagePackageAdmin extends Admin
             ->add('toDevice.deviceType', 'doctrine_orm_choice', [], 'choice', array('choices' => array(
                 'iOS' => 'iOS',
                 'Android' => 'Android'
-            )))
-        ;
+            )));
     }
 
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
             ->add('id')
@@ -61,14 +60,13 @@ class MessagePackageAdmin extends Admin
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ))
-        ;
+            ));
     }
 
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
             //->add('id')
@@ -76,14 +74,13 @@ class MessagePackageAdmin extends Admin
             ->add('toUser')
             ->add('toDevice')
             ->add('status')
-            ->add('processed')
-        ;
+            ->add('processed');
     }
 
     /**
      * @param ShowMapper $showMapper
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
             ->add('id')
@@ -93,8 +90,6 @@ class MessagePackageAdmin extends Admin
             ->add('status')
             ->add('processed')
             ->add('createdAt')
-            ->add('updatedAt')
-
-        ;
+            ->add('updatedAt');
     }
 }
