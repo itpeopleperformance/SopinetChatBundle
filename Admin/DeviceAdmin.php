@@ -2,13 +2,13 @@
 
 namespace Sopinet\ChatBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class DeviceAdmin extends Admin
+class DeviceAdmin extends AbstractAdmin
 {
     /**
      * Default Datagrid values
@@ -23,30 +23,35 @@ class DeviceAdmin extends Admin
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
             ->add('deviceId')
             ->add('deviceGCMId')
             ->add('user')
-            ->add('created_at', 'doctrine_orm_date', array(
+            ->add(
+                'created_at',
+                'doctrine_orm_date',
+                array(
                     'field_type' => 'sonata_type_date_picker',
                     'format' => 'd/m/Y'
                 )
             )
-            ->add('deviceType')
-        ;
+            ->add('deviceType');
     }
 
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
             ->addIdentifier('deviceId')
             ->add('user')
-            ->add('created_at', 'date', array(
+            ->add(
+                'created_at',
+                'date',
+                array(
                     'format' => 'd/m/Y'
                 )
             )
@@ -58,37 +63,37 @@ class DeviceAdmin extends Admin
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ))
-        ;
+            ));
     }
 
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
             ->add('deviceId')
             ->add('deviceGCMId')
             ->add('user')
-            ->add('deviceType')
-        ;
+            ->add('deviceType');
     }
 
     /**
      * @param ShowMapper $showMapper
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
             ->add('deviceId')
             ->add('deviceGCMId')
             ->add('user')
-            ->add('created_at', 'date', array(
+            ->add(
+                'created_at',
+                'date',
+                array(
                     'format' => 'd/m/Y'
                 )
             )
-            ->add('deviceType')
-        ;
+            ->add('deviceType');
     }
 }
