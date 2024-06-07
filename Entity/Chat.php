@@ -35,7 +35,7 @@ class Chat
     const GROUP_LIST = "chat_group_list";
     const GROUP_CLEAN = "chat_group_clean";
 
-    use ORMBehaviors\Timestampable\Timestampable;
+    //use ORMBehaviors\Timestampable\Timestampable;
 
     /**
      * @var \DateTime $deletedAt
