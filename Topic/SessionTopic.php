@@ -78,7 +78,7 @@ class SessionTopic implements TopicInterface, PushableTopicInterface
      * Like RPC is will use to prefix the channel
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'session.topic';
     }
