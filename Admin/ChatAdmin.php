@@ -2,13 +2,15 @@
 
 namespace Sopinet\ChatBundle\Admin;
 
+use Doctrine\ORM\EntityManager;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sopinet\ChatBundle\Entity\MessageRepository;
 
-class ChatAdmin extends AbstractAdmin
+class MessageAdmin extends AbstractAdmin
 {
     /**
      * Default Datagrid values
@@ -25,26 +27,42 @@ class ChatAdmin extends AbstractAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
+        $container = $this->getConfigurationPool()->getContainer();
+        /** @var EntityManager $em */
+        $em = $container->get('doctrine')->getManager();
+        /** @var MessageRepository $reMessages */
+        $reMessages = $em->getRepository("SopinetChatBundle:Message");
+        $types = $reMessages->getTypesMessage();
+
+        //ldd($types);
+
         $datagridMapper
-            ->add('name')
-            ->add('chatMembers')
-            ->add('admin')
-            ->add('createdAt', 'doctrine_orm_date', array(
+            ->add('id')
+            ->add('chat')
+            ->add('fromDevice')
+            ->add('fromDevice.deviceType', 'doctrine_orm_choice', [], [], 'choice', array('choices' => array(
+                'iOS' => 'iOS',
+                'Android' => 'Android'
+            )))
+            ->add('fromUser')
+            ->add(
+                'createdAt',
+                'doctrine_orm_date',
+                array(
                     'field_type' => 'sonata_type_date_picker',
                     'format' => 'd/m/Y'
                 )
             )
-            ->add('updatedAt', 'doctrine_orm_date', array(
+            ->add(
+                'fromTime',
+                'doctrine_orm_date',
+                array(
                     'field_type' => 'sonata_type_date_picker',
                     'format' => 'd/m/Y'
                 )
             )
-            ->add('deletedAt', 'doctrine_orm_date', array(
-                    'field_type' => 'sonata_type_date_picker',
-                    'format' => 'd/m/Y'
-                )
-            )
-        ;
+            ->add('text')
+            ->add('typeClient', 'doctrine_orm_choice', [], [], 'choice', array('choices' => $types));
     }
 
     /**
@@ -54,29 +72,19 @@ class ChatAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('name')
-            ->add('chatMembers')
-            ->add('admin')
-            ->add('createdAt', 'date', array(
-                    'format' => 'd/m/Y'
-                )
-            )
-            ->add('updatedAt', 'date', array(
-                    'format' => 'd/m/Y'
-                )
-            )
-            ->add('deletedAt', 'date', array(
-                    'format' => 'd/m/Y'
-                )
-            )
+            ->add('chat')
+            ->add('typeClient')
+            ->add('fromDevice')
+            ->add('text')
+            ->add('createdAt')
+            ->add('fromTime')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ))
-        ;
+            ));
     }
 
     /**
@@ -85,24 +93,14 @@ class ChatAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('groupPhoto', 'vich_image', array(
-                'label' => false,
-                'required' => false,
-                'allow_delete' => false,
-                'download_link' => true,
-            ))
-            ->add('name')
-            ->add('chatMembers', null, array(
-                'disabled' => false,
-                'by_reference' => false
-            ))
-            ->add('admin')
-            ->add('deletedAt', 'sonata_type_date_picker', array(
-                    'format' => 'dd/MM/yyyy',
-                    'required' => false,
-                )
-            )
-        ;
+            ->add('id')
+            ->add('chat')
+            ->add('fromDevice')
+            ->add('text')
+            //->add('messagesGenerated')
+            ->add('createdAt')
+            ->add('fromTime')
+            ->add('fromUser');
     }
 
     /**
@@ -112,22 +110,15 @@ class ChatAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('name')
-            ->add('chatMembers')
-            ->add('admin')
-            ->add('messages')
-            ->add('createdAt', 'date', array(
-                    'format' => 'd/m/Y'
-                )
-            )
-            ->add('updatedAt', 'date', array(
-                    'format' => 'd/m/Y'
-                )
-            )
-            ->add('deletedAt', 'date', array(
-                    'format' => 'd/m/Y'
-                )
-            )
-        ;
+            ->add('chat')
+            ->add('fromDevice')
+            ->add('text')
+            //->add('messagesGenerated')
+            ->add('createdAt')
+            ->add('fromTime')
+            ->add('fromUser')
+            ->add('mytype')
+            ->add('anytype')
+            ->add('typeClient');
     }
 }
