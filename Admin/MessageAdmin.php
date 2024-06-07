@@ -3,14 +3,14 @@
 namespace Sopinet\ChatBundle\Admin;
 
 use Doctrine\ORM\EntityManager;
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sopinet\ChatBundle\Entity\MessageRepository;
 
-class MessageAdmin extends Admin
+class MessageAdmin extends AbstractAdmin
 {
     /**
      * Default Datagrid values
@@ -25,7 +25,7 @@ class MessageAdmin extends Admin
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $container = $this->getConfigurationPool()->getContainer();
         /** @var EntityManager $em */
@@ -40,30 +40,35 @@ class MessageAdmin extends Admin
             ->add('id')
             ->add('chat')
             ->add('fromDevice')
-            ->add('fromDevice.deviceType', 'doctrine_orm_choice', [], 'choice', array('choices' => array(
+            ->add('fromDevice.deviceType', 'doctrine_orm_choice', [], [], 'choice', array('choices' => array(
                 'iOS' => 'iOS',
                 'Android' => 'Android'
             )))
             ->add('fromUser')
-            ->add('createdAt', 'doctrine_orm_date', array(
+            ->add(
+                'createdAt',
+                'doctrine_orm_date',
+                array(
                     'field_type' => 'sonata_type_date_picker',
                     'format' => 'd/m/Y'
                 )
             )
-            ->add('fromTime', 'doctrine_orm_date', array(
+            ->add(
+                'fromTime',
+                'doctrine_orm_date',
+                array(
                     'field_type' => 'sonata_type_date_picker',
                     'format' => 'd/m/Y'
                 )
             )
             ->add('text')
-            ->add('typeClient', 'doctrine_orm_choice', [], 'choice', array('choices' => $types))
-        ;
+            ->add('typeClient', 'doctrine_orm_choice', [], [], 'choice', array('choices' => $types));
     }
 
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
             ->addIdentifier('id')
@@ -79,14 +84,13 @@ class MessageAdmin extends Admin
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ))
-        ;
+            ));
     }
 
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
             ->add('id')
@@ -96,14 +100,13 @@ class MessageAdmin extends Admin
             //->add('messagesGenerated')
             ->add('createdAt')
             ->add('fromTime')
-            ->add('fromUser')
-        ;
+            ->add('fromUser');
     }
 
     /**
      * @param ShowMapper $showMapper
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
             ->add('id')
@@ -116,7 +119,6 @@ class MessageAdmin extends Admin
             ->add('fromUser')
             ->add('mytype')
             ->add('anytype')
-            ->add('typeClient')
-        ;
+            ->add('typeClient');
     }
 }
