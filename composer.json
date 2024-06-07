@@ -27,7 +27,7 @@
     "knplabs/doctrine-behaviors": "*",
     "richsage/rms-push-notifications-bundle": "*",
     "stof/doctrine-extensions-bundle": "*",
-    "gos/web-socket-bundle": "~1.6",
+    "gos/web-socket-bundle": "*",
     "php-amqplib/rabbitmq-bundle": "2.10.2",
     "vich/uploader-bundle": "*"
   },
