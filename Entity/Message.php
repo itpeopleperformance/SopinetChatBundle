@@ -31,7 +31,7 @@ abstract class Message
     const BACKGROUND_FORCEFALSE = "background_forcefalse";
 
     use MinimalPackage;
-    use ORMBehaviors\Timestampable\Timestampable;
+    //use ORMBehaviors\Timestampable\Timestampable;
 
     /**
      * @var integer
